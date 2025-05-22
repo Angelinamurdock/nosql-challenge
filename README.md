@@ -3,71 +3,60 @@
 **Date**: March 2025
 
 ## Overview
-This project aims to evaluate food hygiene rating from the UK Food Standards Agency. The goal is to provide insights to *Eat Safe, Love* magazine helping them decide where to focus future articles. <br> *This is a fictional project that is a part of a DU Data Analytics bootcamp.*
+This project evaluates food hygiene ratings provided by the UK Food Standards Agency to assist Eat Safe, Love magazine in identifying establishments worthy of focus. Using **MongoDB** and **Python**, the project imports, cleans, updates, and analyzes the data to surface key insights for journalists and food critics.
 
 ## Table of contents
 - [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
 - [Analysis](#analysis)
-- [Resouces/ Data Sources](#resources-data-sources)
+-- [Resources](#resources)
 
 ## Features
-NoSQL Setup: 
-- Provides the initial set up for the database and Jupyter Notebook
-- Adds in a new restaurant to the database
+**Data Setup & Cleaning**
+- Loaded JSON data into MongoDB and verified with PyMongo
+- Added a new restaurant and removed records
+- Converted coordinates and rating values to numeric types for analysis
 
-NoSQL Analysis:
-- Exploratory analysis on the establishments collection to find which locations are best for the magazine to visit and avoid
+**Data Exploration**
+- Queried by hygiene score, rating value, and location (regex and geolocation)
+- Aggregated hygiene scores by Local Authority
+- Output results as Pandas DataFrames for further analysis
 
 ## Installation
 ### Requirements
 - Python 3.x
 - Jupyter Notebook
+- MongoDB installed and running
+- pymongo, pandas, pprint
 
 ### Set up
-1. Install necessary libraries:
-    ```bash
-    pip install pymongo
-    pip install pandas
-    pip install pprint
+1. **Import the data:**
+
+    From your Terminal, run the following to import the establishments.json file into MongoDB:
+    ``` bash
+    mongoimport --type json -d uk_food -c establishments --drop --jsonArray establishments.json
     ```
+2. **Setup database in Jupyter Notebook:**
 
-2. Import the required modules:
-    ```python
-    from pymongo import MongoClient
-    import pandas as pd
-    from pprint import pprint
-    ```
+    Use `NoSQL_setup.ipynb` to connect to MongoDB, verify data import, add the new restaurant, clean data types, and remove Dover records.
+3. **Run analysis queries:**
 
-### Usage instructions
-1. **Import the data**: 
-Import the data provided in the `establishments.json` file from your Terminal. Name the database `uk_food` and the collection `establishments`.
-
-```bash
-mongoimport --type json -d uk_food -c establishments --drop --jsonArray establishments.json
-```
-2. **Finish setup**: Finish seting up the database in the Jupyter notebook `NoSQL_setup_starter.ipynb`
-3. **Start analysing the data**: Proceed with analyzing the data in the Jupyter notebook `NoSQL_analysis_starter.ipynb`
+    Use `NoSQL_analysis.ipynb` to explore the data, answer specific questions, and convert query results into Pandas DataFrames for reporting.
 
 ## Analysis
-The analysis was conducted using the `NoSQL_analysis_starter.ipynb` notebook, where specific questions posed by *Eat Safe, Love* magazine will be answered.
+The analysis was conducted using the `NoSQL_analysis.ipynb` notebook and focuses on answering the following:
+1. Establishments with hygiene score equal to 20
+2. Establishments in London with a RatingValue ≥ 4
+3. Top 5 establishments rated 5, sorted by lowest hygiene score, nearest to "Penang Flavours"
+4. Number of establishments with hygiene score 0 by Local Authority (top 10) 
 
-### Questions to Explore:
-1. Which establishments have a hygiene score equal to 20?
-2. Which establishments in London have a `RatingValue` greater than or equal to 4?
-3. What are the top 5 establishments with a `RatingValue` of 5, sorted by lowest hygiene score, nearest to the new restaurant added, "Penang Flavours"?
-4. How many establishments in each Local Authority area have a hygiene score of 0? 
+## Resources
+- **DU Bootcamp Module 12:** Used challenge files and class materials from the bootcamp.
+- **ChatGPT:** Assisted with code explanations and debugging.
+- **Data Sources**:
+    - [UK Food Standards Agency](https://www.food.gov.uk/)
+    - [UK food hygiene rating data API](https://ratings.food.gov.uk/open-data/en-GB)
 
-### Methodology
-- **Database Queries**: This project uses MongoDB queries to filter and aggregate the data in order to answer the questions.
-- **Data Transformation and Visualization**: The results from the queries were converted into Pandas DataFrames to present the results clearly.
-
-## Resources/ Data Sources
-- Module 12 Challenge Files
-- [UK Food Standards Agency](https://www.food.gov.uk/)
-- [UK food hygiene rating data API](https://ratings.food.gov.uk/open-data/en-GB)
-- I worked with my classmate Jenni Kim on this project.
-- I used ChatGPT to troubleshoot code.
 
 
