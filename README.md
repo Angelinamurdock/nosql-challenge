@@ -1,16 +1,16 @@
-# UK Food Standards Evalutation
+# UK Food Standards Evaluation
 **Creator**: Angelina Murdock  
 **Date**: March 2025
 
 ## Overview
-This project evaluates food hygiene ratings provided by the UK Food Standards Agency to assist Eat Safe, Love magazine in identifying establishments worthy of focus. Using **MongoDB** and **Python**, the project imports, cleans, updates, and analyzes the data to surface key insights for journalists and food critics.
+This project evaluates food hygiene ratings provided by the UK Food Standards Agency to assist *Eat Safe, Love* magazine in identifying establishments worthy of focus. Using **MongoDB** and **Python**, the project imports, cleans, updates, and analyzes the data to surface key insights for journalists and food critics.
 
 ## Table of contents
 - [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
 - [Analysis](#analysis)
--- [Resources](#resources)
+- [Resources](#resources)
 
 ## Features
 **Data Setup & Cleaning**
